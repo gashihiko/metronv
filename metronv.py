@@ -15,7 +15,7 @@ class Wav:
         with contextlib.closing(wave.open(self.path, 'r')) as f:
             frames = f.getnframes()
             rate = f.getframerate()
-            duration = frames / float(rate)
+            duration = frames / rate
             return duration
 
     def play(self):
