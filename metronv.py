@@ -3,6 +3,7 @@ from playsound import playsound
 import time
 import wave
 import contextlib
+from pathlib import Path
 
 
 class Wav:
@@ -51,7 +52,7 @@ class MetronV:
 
 
 if __name__ == '__main__':
-    metan = MetronV('numvoice', 80)
+    metan = MetronV(Path(__file__).parent.resolve() / 'numvoice', 80)
     metan.ready()
     start = time.time()
     metan.count_up()
