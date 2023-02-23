@@ -50,8 +50,9 @@ class MetronV:
             time.sleep(self.interval[i])
 
 
-metan = MetronV('numvoice', 80)
-metan.ready()
-start = time.time()
-metan.count_up()
-print(f'{time.time() - start:.2f}')
+if __name__ == '__main__':
+    metan = MetronV('numvoice', 80)
+    metan.ready()
+    start = time.time()
+    metan.count_up()
+    print(f'{time.time() - start:.2f}')
