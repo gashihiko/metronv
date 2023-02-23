@@ -23,13 +23,14 @@ class Wav:
 
 
 class MetronV:
-    def __init__(self, directory: str, rpm: int):
+    rpm = 80
+
+    def __init__(self, directory: str):
         self.dir = directory
-        self.rpm = rpm
         self.voice = dict()
         self.interval = dict()
 
-        for i in range(1, rpm+1):
+        for i in range(1, self.rpm+1):
             self.voice[i] = Wav(f'{self.dir}/{i}.wav')
             self.interval[i] = 60 / self.rpm - self.voice[i].duration - 0.05 # 0.05 seconds of loss during each loop process
             if self.interval[i] < 0:
@@ -52,7 +53,7 @@ class MetronV:
 
 
 if __name__ == '__main__':
-    metan = MetronV(Path(__file__).parent.resolve() / 'numvoice', 80)
+    metan = MetronV(Path(__file__).parent.resolve() / 'numvoice')
     metan.ready()
     start = time.time()
     metan.count_up()
